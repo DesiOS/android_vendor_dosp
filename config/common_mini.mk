@@ -1,4 +1,4 @@
 # Inherit common VIPER stuff
-$(call inherit-product, vendor/viper/config/common.mk)
+$(call inherit-product, vendor/dosp/config/common.mk)
 
 PRODUCT_SIZE := mini
