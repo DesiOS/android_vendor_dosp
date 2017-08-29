@@ -27,7 +27,7 @@ if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
 VIPER_ROOT="$MY_DIR"/../../..
 
-HELPER="$VIPER_ROOT"/vendor/viper/build/tools/extract_utils.sh
+HELPER="$VIPER_ROOT"/vendor/dosp/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
