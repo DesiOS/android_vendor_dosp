@@ -42,7 +42,7 @@ function breakfast()
     local variant=$2
     VIPER_DEVICES_ONLY="true"
     unset LUNCH_MENU_CHOICES
-    for f in `/bin/ls vendor/viper.vendorsetup.sh 2> /dev/null`
+    for f in `/bin/ls vendor/dosp.vendorsetup.sh 2> /dev/null`
         do
             echo "including $f"
             . $f
@@ -63,11 +63,11 @@ function breakfast()
                 variant="userdebug"
             fi
 
-            if ! check_product viper_$target && check_product viper_$target; then
+            if ! check_product dosp_$target && check_product dosp_$target; then
                 echo "** Warning: '$target' is using CM-based makefiles. This will be deprecated in the next major release."
-                lunch viper_$target-$variant
+                lunch dosp_$target-$variant
             else
-                lunch viper_$target-$variant
+                lunch dosp_$target-$variant
             fi
         fi
     fi
@@ -80,7 +80,7 @@ function eat()
 {
     if [ "$OUT" ] ; then
         MODVERSION=$(get_build_var VIPER_VERSION)
-        ZIPFILE=viper-$MODVERSION.zip
+        ZIPFILE=dosp-$MODVERSION.zip
         ZIPPATH=$OUT/$ZIPFILE
         if [ ! -f $ZIPPATH ] ; then
             echo "Nothing to eat"
@@ -95,7 +95,7 @@ function eat()
             done
             echo "Device Found.."
         fi
-        if (adb shell getprop ro.viper.device | grep -q "$VIPER_BUILD"); then
+        if (adb shell getprop ro.dosp.device | grep -q "$VIPER_BUILD"); then
             # if adbd isn't root we can't write to /cache/recovery/
             adb root
             sleep 1
@@ -318,7 +318,7 @@ function installboot()
     sleep 1
     adb wait-for-online shell mount /system 2>&1 > /dev/null
     adb wait-for-online remount
-    if (adb shell getprop ro.viper.device | grep -q "$VIPER_BUILD");
+    if (adb shell getprop ro.dosp.device | grep -q "$VIPER_BUILD");
     then
         adb push $OUT/boot.img /cache/
         for i in $OUT/system/lib/modules/*;
@@ -363,7 +363,7 @@ function installrecovery()
     sleep 1
     adb wait-for-online shell mount /system 2>&1 >> /dev/null
     adb wait-for-online remount
-    if (adb shell getprop ro.viper.device | grep -q "$VIPER_BUILD");
+    if (adb shell getprop ro.dosp.device | grep -q "$VIPER_BUILD");
     then
         adb push $OUT/recovery.img /cache/
         adb shell dd if=/cache/recovery.img of=$PARTITION
@@ -790,7 +790,7 @@ function dopush()
         echo "Device Found."
     fi
 
-    if (adb shell getprop ro.viper.device | grep -q "$VIPER_BUILD") || [ "$FORCE_PUSH" = "true" ];
+    if (adb shell getprop ro.dosp.device | grep -q "$VIPER_BUILD") || [ "$FORCE_PUSH" = "true" ];
     then
     # retrieve IP and PORT info if we're using a TCP connection
     TCPIPPORT=$(adb devices \
@@ -921,7 +921,7 @@ alias cmkap='dopush cmka'
 
 function repopick() {
     T=$(gettop)
-    $T/vendor/viper.build/tools/repopick.py $@
+    $T/vendor/dosp.build/tools/repopick.py $@
 }
 
 function fixup_common_out_dir() {
