@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2012 The CyanogenMod Project
-               (C) 2017 ViperOs Project
+               (C) 2017 DOSP Project
  
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@
      limitations under the License.
 -->
 
-<!-- This feature shows that this is ViperOs -->
+<!-- This feature shows that this is DOSP -->
 <permissions>
-    <feature name="com.viper.android" />
+    <feature name="com.dosp.android" />
 </permissions>
 
