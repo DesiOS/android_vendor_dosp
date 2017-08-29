@@ -1,4 +1,4 @@
-PRODUCT_BRAND ?= ViperOS
+PRODUCT_BRAND ?= DOSP
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
@@ -28,37 +28,37 @@ endif
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/viper/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
-    vendor/viper/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/viper/prebuilt/common/bin/50-viper.sh:system/addon.d/50-viper.sh \
-    vendor/viper/prebuilt/common/bin/blacklist:system/addon.d/blacklist
+    vendor/dosp/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/dosp/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
+    vendor/dosp/prebuilt/common/bin/50-dosp.sh:system/addon.d/50-dosp.sh \
+    vendor/dosp/prebuilt/common/bin/blacklist:system/addon.d/blacklist
 
 # System feature whitelists
 PRODUCT_COPY_FILES += \
-    vendor/viper/config/permissions/backup.xml:system/etc/sysconfig/backup.xml \
-    vendor/viper/config/permissions/power-whitelist.xml:system/etc/sysconfig/power-whitelist.xml
+    vendor/dosp/config/permissions/backup.xml:system/etc/sysconfig/backup.xml \
+    vendor/dosp/config/permissions/power-whitelist.xml:system/etc/sysconfig/power-whitelist.xml
 
 # Signature compatibility validation
 PRODUCT_COPY_FILES += \
-    vendor/viper/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
+    vendor/dosp/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
 
 # init.d support
 PRODUCT_COPY_FILES += \
-    vendor/viper/prebuilt/common/bin/sysinit:system/bin/sysinit
+    vendor/dosp/prebuilt/common/bin/sysinit:system/bin/sysinit
 
 ifneq ($(TARGET_BUILD_VARIANT),user)
 # userinit support
 PRODUCT_COPY_FILES += \
-    vendor/viper/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
+    vendor/dosp/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
 endif
 
 # VIPER-specific init file
 PRODUCT_COPY_FILES += \
-    vendor/viper/prebuilt/common/etc/init.local.rc:root/init.viper.rc
+    vendor/dosp/prebuilt/common/etc/init.local.rc:root/init.dosp.rc
 
 # Copy over added mimetype supported in libcore.net.MimeUtils
 PRODUCT_COPY_FILES += \
-    vendor/viper/prebuilt/common/lib/content-types.properties:system/lib/content-types.properties
+    vendor/dosp/prebuilt/common/lib/content-types.properties:system/lib/content-types.properties
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
@@ -70,14 +70,14 @@ PRODUCT_COPY_FILES += \
 
 # This is ViperOS!
 PRODUCT_COPY_FILES += \
-    vendor/viper/config/permissions/com.viper.android.xml:system/etc/permissions/com.viper.android.xml
+    vendor/dosp/config/permissions/com.dosp.android.xml:system/etc/permissions/com.dosp.android.xml
 
 # Include CM audio files
-include vendor/viper/config/cm_audio.mk
+include vendor/dosp/config/cm_audio.mk
 
 ifneq ($(TARGET_DISABLE_CMSDK), true)
 # CMSDK
-include vendor/viper/config/cmsdk_common.mk
+include vendor/dosp/config/cmsdk_common.mk
 endif
 
 ifeq ($(TARGET_USE_AUDIOFX), true)
@@ -109,18 +109,18 @@ PRODUCT_PROPERTY_OVERRIDES := \
 
 # LatinIme Gestures
 PRODUCT_COPY_FILES += \
-    vendor/viper/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so
+    vendor/dosp/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so
 
 # Camera Effects for devices without a vendor partition
 ifneq ($(filter shamu,$(TARGET_PRODUCT)),)
 PRODUCT_COPY_FILES +=  \
-    vendor/viper/prebuilt/common/media/LMspeed_508.emd:system/vendor/media/LMspeed_508.emd \
-    vendor/viper/prebuilt/common/media/PFFprec_600.emd:system/vendor/media/PFFprec_600.emd
+    vendor/dosp/prebuilt/common/media/LMspeed_508.emd:system/vendor/media/LMspeed_508.emd \
+    vendor/dosp/prebuilt/common/media/PFFprec_600.emd:system/vendor/media/PFFprec_600.emd
 endif
 
 # Android O emojis
 PRODUCT_COPY_FILES += \
-    vendor/viper/prebuilt/common/fonts/NotoColorEmoji.ttf:system/fonts/NotoColorEmoji.ttf
+    vendor/dosp/prebuilt/common/fonts/NotoColorEmoji.ttf:system/fonts/NotoColorEmoji.ttf
 
 # Prebuilt Packages
 PRODUCT_PACKAGES += \
@@ -255,7 +255,7 @@ PRODUCT_PACKAGES += \
     procrank
 endif
 
-DEVICE_PACKAGE_OVERLAYS += vendor/viper/overlay/common
+DEVICE_PACKAGE_OVERLAYS += vendor/dosp/overlay/common
 
 # Versioning System
 # ViperOs version.
@@ -268,17 +268,17 @@ ifndef VIPER_BUILD_TYPE
     VIPER_BUILD_TYPE := UNOFFICIAL
     
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.viper.buildtype=unofficial
+    ro.dosp.buildtype=unofficial
 endif
 
 ifeq ($(VIPER_BUILD_TYPE), OFFICIAL)
 PRODUCT_PACKAGES += \
     ViperOTA
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.ota.manifest=https://download.viper-os.com/ota/$(shell echo "$(VIPER_DEVICE)" | sed 's/viper_*//') \
+    ro.ota.manifest=https://download.dosp-os.com/ota/$(shell echo "$(VIPER_DEVICE)" | sed 's/dosp_*//') \
     ro.ota.build.date=$(shell date +%Y%m%d)
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.viper.buildtype=official
+    ro.dosp.buildtype=official
 endif
 
 # Set all versions
@@ -286,16 +286,16 @@ VIPER_VERSION := Viper-$(VIPER_DEVICE)-$(PLATFORM_VERSION)-$(VIPER_VERSION_CODEN
 
 PRODUCT_PROPERTY_OVERRIDES += \
     BUILD_DISPLAY_ID=$(BUILD_ID) \
-    viper.ota.version=$(VIPER_VERSION) \
-    ro.viper.version=$(VIPER_VERSION)
+    dosp.ota.version=$(VIPER_VERSION) \
+    ro.dosp.version=$(VIPER_VERSION)
 
 PRODUCT_EXTRA_RECOVERY_KEYS += \
-    vendor/viper/build/target/product/security/viper
+    vendor/dosp/build/target/product/security/dosp
 
--include vendor/viper-priv/keys/keys.mk
+-include vendor/dosp-priv/keys/keys.mk
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
--include vendor/viper/config/partner_gms.mk
+-include vendor/dosp/config/partner_gms.mk
 -include vendor/cyngn/product.mk
 
 $(call prepend-product-if-exists, vendor/extra/product.mk)
