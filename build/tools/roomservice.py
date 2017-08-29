@@ -42,11 +42,11 @@ except ImportError:
 DEBUG = False
 default_manifest = ".repo/manifest.xml"
 
-custom_local_manifest = ".repo/local_manifests/viper_manifest.xml"
+custom_local_manifest = ".repo/local_manifests/dosp_manifest.xml"
 custom_default_revision = "nougat"
-custom_dependencies = "viper.dependencies"
-org_manifest = "viper-devices"  # leave empty if org is provided in manifest
-org_display = "ViperOS-Devices"  # needed for displaying
+custom_dependencies = "dosp.dependencies"
+org_manifest = "dosp-devices"  # leave empty if org is provided in manifest
+org_display = "dosp-Devices"  # needed for displaying
 
 github_auth = None
 
