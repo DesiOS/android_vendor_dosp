@@ -676,8 +676,8 @@ function oat2dex() {
     local OAT=
 
     if [ -z "$BAKSMALIJAR" ] || [ -z "$SMALIJAR" ]; then
-        export BAKSMALIJAR="$VIPER_ROOT"/vendor/viper/build/tools/smali/baksmali.jar
-        export SMALIJAR="$VIPER_ROOT"/vendor/viper/build/tools/smali/smali.jar
+        export BAKSMALIJAR="$VIPER_ROOT"/vendor/dosp/build/tools/smali/baksmali.jar
+        export SMALIJAR="$VIPER_ROOT"/vendor/dosp/build/tools/smali/smali.jar
     fi
 
     # Extract existing boot.oats to the temp folder
