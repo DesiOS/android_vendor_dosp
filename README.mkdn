@@ -1,7 +1,7 @@
-ViperOs Project
+DOSP Project
 ===============
 
-![ViperOS](http://i.imgur.com/bwSVDSV.png)
+![DOSP](https://raw.githubusercontent.com/DOSP-Project/Desi_Goodness/n7x/DOSP-Logo.png)
 
 Download the Source
 ===================
@@ -13,7 +13,7 @@ Initializing Repository
 
 Initiate core trees without any device/kernel/vendor:
 
-    repo init -u https://github.com/ViperOS-Project/viper_manifest.git -b nougat
+    repo init -u https://github.com/DOSP-Project/viper_manifest.git -b nougat
 
 Then to sync up:
 
@@ -32,7 +32,7 @@ how to build.
     lunch You can also build for specific devices (eg. hammerhead) like this:
 
     . build/envsetup.sh
-    lunch viper_hammerhead-userdebug
+    lunch dosp_hammerhead-userdebug
     mka poison
 
 Remember to `make clobber && make clean` every now and then!
