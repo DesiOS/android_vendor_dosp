@@ -13,11 +13,11 @@ Initializing Repository
 
 Initiate core trees without any device/kernel/vendor:
 
-    repo init -u https://github.com/DOSP-Project/viper_manifest.git -b nougat
+    repo init -u https://github.com/DOSP-Project/Desi_Goodness.git -b nougat
 
 Then to sync up:
 
-    repo sync -c -f -j8 --force-sync --no-clone-bundle --no-tags
+    repo sync --force-sync --force-broken --no-clone-bundle -jxx (Ur Choice)
 
 *** 
 
