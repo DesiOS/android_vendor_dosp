@@ -42,7 +42,7 @@ except ImportError:
 DEBUG = False
 default_manifest = ".repo/manifest.xml"
 
-custom_local_manifest = ".repo/local_manifests/dosp_manifest.xml"
+custom_local_manifest = ".repo/local_manifests/Desi_Goodness.xml"
 custom_default_revision = "nougat"
 custom_dependencies = "dosp.dependencies"
 org_manifest = "dosp-devices"  # leave empty if org is provided in manifest
